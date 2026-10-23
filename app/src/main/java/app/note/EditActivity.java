@@ -25,7 +25,10 @@ public class EditActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        Store.set(this, et.getText().toString());
-        NoteWidget.refresh(this);
+        String now = et.getText().toString();
+        if (!now.equals(Store.get(this))) {
+            Store.set(this, now);
+            NoteWidget.refresh(this);
+        }
     }
 }

@@ -6,6 +6,7 @@
 
         <activity
             android:name=".EditActivity"
+            android:launchMode="singleTask"
             android:exported="true"
             android:theme="@style/T"
             android:windowSoftInputMode="stateVisible|adjustResize">
