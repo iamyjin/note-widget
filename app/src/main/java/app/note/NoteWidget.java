@@ -13,20 +13,28 @@ public class NoteWidget extends AppWidgetProvider {
     @Override
     public void onUpdate(Context c, AppWidgetManager m, int[] ids) {
         for (int id : ids) m.updateAppWidget(id, build(c));
+        m.notifyAppWidgetViewDataChanged(ids, R.id.list);
     }
 
     static RemoteViews build(Context c) {
-        String saved = Store.get(c);
         RemoteViews v = new RemoteViews(c.getPackageName(), R.layout.widget);
-        v.setTextViewText(R.id.text, saved.isEmpty() ? "Тапни, чтобы написать" : saved);
-        v.setOnClickPendingIntent(R.id.text,
-            PendingIntent.getActivity(c, 0, new Intent(c, EditActivity.class),
+        v.setRemoteAdapter(R.id.list, new Intent(c, NoteService.class));
+        Intent edit = new Intent(c, EditActivity.class);
+        // тап по тексту (шаблон для элементов списка)
+        v.setPendingIntentTemplate(R.id.list,
+            PendingIntent.getActivity(c, 0, edit,
+                PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+        // тап по пустому месту
+        v.setOnClickPendingIntent(R.id.root,
+            PendingIntent.getActivity(c, 1, edit,
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
         return v;
     }
 
     static void refresh(Context c) {
-        AppWidgetManager.getInstance(c)
-            .updateAppWidget(new ComponentName(c, NoteWidget.class), build(c));
+        AppWidgetManager m = AppWidgetManager.getInstance(c);
+        int[] ids = m.getAppWidgetIds(new ComponentName(c, NoteWidget.class));
+        if (ids.length == 0) return;
+        m.notifyAppWidgetViewDataChanged(ids, R.id.list);
     }
 }

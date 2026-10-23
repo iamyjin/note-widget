@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="Заметка"
-        android:icon="@android:drawable/ic_menu_edit">
+        android:icon="@drawable/ic">
 
         <activity
             android:name=".EditActivity"
             android:exported="true"
+            android:theme="@style/T"
             android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,5 +23,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
+
+        <service
+            android:name=".NoteService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 </manifest>
