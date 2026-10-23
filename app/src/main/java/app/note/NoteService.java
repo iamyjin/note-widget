@@ -33,14 +33,17 @@ public class NoteService extends RemoteViewsService {
 
         @Override
         public RemoteViews getViewAt(int i) {
-            RemoteViews r = new RemoteViews(c.getPackageName(), R.layout.item);
-            r.setTextViewText(R.id.t, lines[i].isEmpty() ? " " : lines[i]);
+            String raw = lines[i];
+            boolean h = Fmt.isHeading(raw);
+            RemoteViews r = new RemoteViews(c.getPackageName(), h ? R.layout.item_h : R.layout.item);
+            String body = h ? raw.substring(2) : raw;
+            r.setTextViewText(R.id.t, body.isEmpty() ? " " : Fmt.plain(body));
             r.setOnClickFillInIntent(R.id.t, new Intent());
             return r;
         }
 
         @Override public RemoteViews getLoadingView() { return null; }
-        @Override public int getViewTypeCount() { return 1; }
+        @Override public int getViewTypeCount() { return 2; }
         @Override public long getItemId(int i) { return i; }
         @Override public boolean hasStableIds() { return false; }
     }
