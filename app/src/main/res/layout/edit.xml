@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/er"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFEBDF"
     android:orientation="vertical">
 
     <EditText
@@ -14,7 +14,6 @@
         android:gravity="top|start"
         android:inputType="textMultiLine|textCapSentences"
         android:padding="24dp"
-        android:textColor="#171715"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -31,11 +30,9 @@
             android:layout_width="56dp"
             android:layout_height="44dp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/btn"
             android:clickable="true"
             android:gravity="center"
             android:text="¶"
-            android:textColor="#171715"
             android:textSize="20sp" />
 
         <TextView
@@ -43,11 +40,9 @@
             android:layout_width="56dp"
             android:layout_height="44dp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/btn"
             android:clickable="true"
             android:gravity="center"
             android:text="H"
-            android:textColor="#171715"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -55,12 +50,24 @@
             android:id="@+id/bB"
             android:layout_width="56dp"
             android:layout_height="44dp"
-            android:background="@drawable/btn"
             android:clickable="true"
             android:gravity="center"
             android:text="B"
-            android:textColor="#171715"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/bC"
+            android:layout_width="56dp"
+            android:layout_height="44dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="●"
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

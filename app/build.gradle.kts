@@ -10,8 +10,8 @@ android {
         applicationId = "app.note"
         minSdk = 26
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 6
+        versionName = "1.5"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
