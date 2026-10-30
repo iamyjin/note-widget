@@ -2,6 +2,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ir"
     android:layout_width="match_parent"
-    android:layout_height="560dp"
+    android:layout_height="1dp"
     android:background="@color/sys_bg">
 </FrameLayout>
